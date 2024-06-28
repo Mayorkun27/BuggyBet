@@ -1,0 +1,650 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --bs-table-bg: #ffffff00;
+    --bs-body-bg: #ffffff00;
+}
+body{
+    background: #000616;
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+.navbar{
+    box-shadow: 0px 3px 15px #796fab8a;
+}
+nav,
+.sidebar,
+.dropdown-gen{
+    background: #080f25;
+    .profile{
+        display: flex;
+        align-items: center;
+        color: #fff;
+        border: 2px solid #796fab;
+        border-radius: 5px;
+        img{
+            border-radius: 50%;
+            border: .5px solid #fff;
+        }
+    }
+    .ti{
+        cursor: pointer;
+    }
+    .ti-settings:hover{
+        scale: 1.1;
+        transition: .5ms linear;
+    }
+}
+.nav-ul .nav-link{
+    position: relative;
+}
+.nav-ul .nav-link::after{
+    content: "";
+    position: absolute;
+    width: 0;
+    background: #796fab;
+    bottom: -5px;
+    left: 0;
+    height: 5px;
+    border-radius: 100px;
+}
+.nav-ul .nav-link:hover::after,
+.nav-ul .nav-link:focus::after,
+.nav-ul .nav-link:active::after{
+    width: 100%;
+    transition: 1s ease-in-out;
+}
+.menu{
+    position: fixed;
+    width: 350px;
+    height: 90%;
+    background: #796fab76;
+    backdrop-filter: blur(5px);
+    z-index: 50;
+    right: 0;
+    top: 63px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    .rolll{
+        text-align: center;
+        border: 0px;
+        padding: 6px 8px;
+        background:  #0b1535e1;
+        backdrop-filter: blur(2px);
+        color: #fff;
+        gap: 8px;
+        width: 100%;
+        /* border-radius: 8px; */
+        box-shadow: 0px 5px 10px #1a1a1a80;
+        p{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: .5rem;
+            .ti{
+                font-size: 20px;
+            }
+        }
+    }
+    .rolll2{
+        border: 0px;
+        padding: 6px 8px;
+        font-size: small;
+        color: #f0f0f0;
+        background: transparent;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 1rem;
+        cursor: context-menu !important;
+        box-shadow: 0px 5px 10px #0b1535;
+    }
+    .rolll3{
+        text-align: center;
+        border: 0px;
+        padding: 20px 8px;
+        background:  #0b1535;
+        backdrop-filter: blur(2px);
+        color: #fff;
+        gap: 8px;
+        width: 100%;
+        margin-top: 5rem;
+        box-shadow: 0px 5px 10px #1a1a1a80;
+    }
+    .rolll:active{
+        border-radius: 8px;
+        background:  #E3951E;
+    }
+    .rolll:focus{
+        background:  #E3951E;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 2px solid var(--states-focused, #E3951E);
+    }
+}
+main{
+    position: relative;
+    left: 0;
+    #toggle1{
+        position: fixed;
+        top: 30%;
+        width: 50px;
+        z-index: 10;
+        font-size: 30px;
+        background: #796fab;
+        border-radius: 5px;
+        display: none;
+    }
+    #toggle2{
+        display: none;
+    }
+}
+.sidebar{
+    display: none;
+    position: fixed;
+    height: 100vh !important;
+    overflow-y: scroll;
+    .fa, .ti-star, svg{
+        font-size: 20px;
+    }
+    li{
+        font-size: 12px;
+    }
+    .navbar-nav{
+        border-bottom: 1px solid #8d8d8d;
+    }
+    .ti-star{
+        display: none;
+        cursor: pointer;
+    }
+    .ti-star-filled{
+        font-size: 16px;
+    }
+}
+.sidebar li:hover,
+.sidebar li:focus{
+    cursor: pointer;
+    background: #0f2363;
+    border-radius: 20px;
+    transition: .5s;
+    .ti-star{
+        display: block;
+        font-size: 16px;
+    }
+}
+.sidebar::-webkit-scrollbar{
+    width: 5px;
+    height: 80vh;
+}
+.sidebar::-webkit-scrollbar-thumb{
+    background: #fff;
+}
+.sidebar::-webkit-scrollbar-track{
+    background: #796fab;
+}
+.content{
+    transform: translateX(20%);
+    .hot{
+        swiper-container {
+            width: 100%;
+        }
+        swiper-slide {
+            width: 40%;
+            white-space: nowrap;
+            /* animation: scroll-left 10s linear infinite; */
+            .hot-card{
+                display: grid;
+                gap: 2rem;
+                background: #0e111d;
+                border-radius: 10px;
+                .hot-card-mid-mid{
+                    border: 1px solid #796fab;
+                    border-radius: 50%;
+                    height: 40px;
+                    width: 40px;
+                    display: grid;
+                    place-items: center;
+                }
+                .hot-card-btom{
+                    .btn{
+                        color: #fff;
+                        border-radius: 5px;
+                        background: #080f25;
+                    }
+                    .btn:hover,
+                    .btn:focus{
+                        border: none;
+                        background: #796fab;
+                    }
+                }
+            }
+            .hot-card:hover{
+                cursor: pointer;
+                border: 1px solid #796fab;
+                transition: .8s;
+            }
+        }
+    }
+    .live{
+        /* border: 1px solid green; */
+        .live-categories{
+            display: inline-block;
+            .btn{
+                color: #fff;
+                border-radius: 100px;
+                background: #080f25;
+            }
+            .ti{
+                color: #796fab;
+                color: #E3951E;
+            }
+            .btn:first-child,
+            .btn:hover,
+            .btn:focus,
+            .btn:active{
+                border: 1px solid #796fab;
+                background: #080f25;
+            }
+        }
+        .live-right-now{
+            /* border: 1px solid pink; */
+            font-size: 14px;
+            swiper-slide{
+                width: 40%;
+                background: #0e111d;
+                border-radius: 10px;
+            }
+            .btn{
+                background: #0e111d;
+                border: 1px solid #796fab;
+                border-radius: 100px;
+                color: #796fab;
+            }
+            swiper-slide:hover{
+                border: 1px solid #796fab;
+                cursor: pointer;
+            }
+        }
+        .live-right-others-row{
+            background: transparent !important;
+            .row{
+                background: #0f1322;
+                border-radius: 10px;
+            }
+        }
+        .table-responsive{
+            overflow-x: scroll;
+            .table{
+                color: #fff;
+                border: none;
+                th, td, tbody, thead, table{
+                    border: none;
+                    color: #fff;
+                }
+                thead{
+                    border-bottom: 1px solid #2c3655;
+                }
+            }
+            .btn{
+                color: #fff;
+                border-radius: 5px;
+                background: #0b1535;
+                border: none;
+            }
+            .btn:hover,
+            .btn:focus{
+                border: none;
+                background: #796fab;
+            }
+            select{
+                background: transparent;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                color: #fff;
+                option{
+                    background: #000;
+                }
+            }
+        }
+        ::-webkit-scrollbar{
+            display: none;
+        }
+        .live-right-others-row{
+            background: #0e111d;
+            border-radius: 10px;
+            .live-score{
+                border: 1px solid #2c3655;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                display: grid;
+                place-items: center;
+            }
+        }
+    }
+    .upcoming{
+        /* border: 1px solid green; */
+        .upcoming-categories{
+            display: inline-block;
+            .btn{
+                color: #fff;
+                border-radius: 100px;
+                background: #080f25;
+            }
+            .ti{
+                color: #796fab;
+                color: #E3951E;
+            }
+            .btn:first-child,
+            .btn:hover,
+            .btn:focus,
+            .btn:active{
+                border: 1px solid #796fab;
+                background: #080f25;
+            }
+        }
+        .upcoming-right-others-row{
+            background: transparent !important;
+            .row{
+                background: #0f1322;
+                border-radius: 10px;
+            }
+        }
+        .table-responsive{
+            overflow-x: scroll;
+            .table{
+                color: #fff;
+                border: none;
+                th, td, tbody, thead, table{
+                    border: none;
+                    color: #fff;
+                }
+                thead{
+                    border-bottom: 1px solid #2c3655;
+                }
+            }
+            .btn{
+                color: #fff;
+                border-radius: 5px;
+                background: #0b1535;
+                border: none;
+            }
+            .btn:hover,
+            .btn:focus{
+                border: none;
+                background: #796fab;
+            }
+            select{
+                background: transparent;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                color: #fff;
+                option{
+                    background: #000;
+                }
+            }
+        }
+        ::-webkit-scrollbar{
+            display: none;
+        }
+        .upcoming-right-others-row{
+            background: #0e111d;
+            border-radius: 10px;
+            .upcoming-score{
+                font-size: 20px;
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                text-align: end;
+                place-items: end;
+                cursor: pointer;
+                justify-content: space-between;
+            }
+        }
+    }
+    .footer{
+            background: #0b1535;
+            .sponsors{
+            background: #0b1535;
+        }
+        .community{
+            ul{
+                display: flex;
+                flex-direction: row;
+                li{
+                    border-radius: 50%;
+                    width: max-content;
+                    background: #080f25;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                a{
+                    text-decoration: none;
+                    padding: 30px;
+                    color: #fff;
+                    .ti{
+                        font-size: 25px;
+                    }
+                }
+            }
+        }
+    }
+}
+.betslip{
+    position: fixed;
+    width: 350px;
+    background: #796fab;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    color: #fff;
+    z-index: 50;
+    right: 1%;
+    bottom: -60%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    padding: 0;
+    transition: bottom 2s;
+    .betslip-top{
+        .openBetSlip{
+            cursor: pointer;
+            font-size: 2rem;
+        }
+        .openBetSlip2{
+            rotate: 180deg;
+            cursor: pointer;
+            font-size: 2rem;
+            transition: bottom 2s;
+        }
+    }
+    #betCount{
+        width: 20px;
+        min-width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        color: #796fab;
+        font-weight: 600;
+    }
+    .switch{
+        font-size: 17px;
+        position: relative;
+        display: inline-block;
+        width: 6.2rem;
+        height: 1.4rem;
+    }
+    .switch input{
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    .slider{
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #0f2363;
+        border: 1px solid #adb5bd;
+        transition: .4s;
+        border-radius: 30px;
+    }    
+    .slider:before{
+        position: absolute;
+        content: "REAL";
+        color: #fff;
+        height: 1.05rem;
+        font-weight: 900;
+        font-size: 10px;
+        width: 3rem;
+        border-radius: 20px;
+        left: .1rem;
+        top: 2px;
+        background-color: #796fab;
+        transition: .4s;
+    }
+    input:checked + .slider{
+        background-color: #2c3655;
+    } 
+    input:checked + .slider:before{
+        content: "SIM";
+        color: #E3951E;
+        position: absolute;
+        transform: translateX(2.9rem);
+        background-color: #fff;
+    }
+    .betslip-body{
+        background: #0e111d;
+        width: 100%;
+        .betslip-body-top{
+            display: flex;
+            gap: .3rem;
+            .btn{
+                background: #E3951E;
+                color: #fff;
+                width: 100%;
+                border-radius: 0px;
+            }
+            .btn:hover{
+                background: #E3951E;
+                width: 100%;
+                border-radius: 0px;
+            }
+            .btn:active{
+                background:  #fff;
+            }
+            .btn:focus,
+            #betType{
+                background:  #fff;
+                color: #000;
+                border: 2px solid var(--states-focused, #fff);
+            }
+        }
+        .betslip-body-main{
+            background: #fff;
+            max-height: 50vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            .btn,
+            .stake-buttons .btn,
+            .add-stake .btn{
+                color: #2c3655;
+                font-size: 10px;
+                background: #fff;
+                border: 1.5px solid var(--states-focused, #2c3655);
+                border-radius: 100px;
+            }
+            .btn:hover,
+            .stake-buttons .btn:hover,
+            .add-stake .btn:hover{
+                color: #2c3655;
+            }
+            .betslip-stake{
+                color: #000;
+                #display{
+                    text-align: end;
+                    box-shadow: none;
+                    border: 2px solid var(--states-focused, #796fab)
+                }
+                .betslip-staking{
+                    #stakeConfirm{
+                        background: #796fab;
+                        color: #fff;
+                        border-radius: 0px;
+                    }
+                    .stake-buttons{
+                        /* border: 2px solid green; */
+                        display: grid;
+                        justify-content: space-between;
+                        /* gap: .2rem; */
+                        grid-template-columns: repeat(7, 1fr);
+                        button{
+                            border-radius: 0;
+                        }
+                    }
+                    .add-stake{
+                        .btn{
+                            border-radius: 0px;
+                        }
+                    }
+                }
+            }
+            .betslip-picked{
+                cursor: pointer;
+                color: #000;
+                .betslip-picked-card{
+                    border-bottom: 1px solid #2c3655;
+                }
+                #selectedIcon{
+                    width: 100%;
+                    font-size: 30px;
+                    min-width: 100%;
+                    height: 70%;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: 600;
+                }
+                .live{
+                    background: #ff0000f1;
+                    color: #fff;
+                    height: 30%;
+                    font-size: 10px;
+                }
+                .selected-details{
+                    display: flex;
+                    flex-direction: column;
+                    text-align: start;
+                    font-size: 11px;
+                }
+            }
+        }
+        ::-webkit-scrollbar{
+            display: none;
+        }
+        .betslip-body-btom{
+            width: 100%;
+            gap: .3rem;
+            .btn{
+                background: #E3951E;
+                color: #fff;
+                width: 100%;
+                border-radius: 0px;
+                padding: 15px 0px;
+            }
+        }
+    }
+    
+}

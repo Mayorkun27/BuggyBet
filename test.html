@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .menu-fl{
+    position: absolute;
+    width: 300px;
+    height: 420px;
+    background: #ffffff9c;
+    backdrop-filter: blur(5px);
+    z-index: 50;
+    right: 32px;
+    top: 92px;
+    display: flex;
+    flex-direction: column;
+    .rolll{
+        border: 0px;
+        padding: 6px 8px;
+        background: #1a1a1a80;
+        background:  #F0F0F0;
+        backdrop-filter: blur(2px);
+        color: #fff;
+        color: #000;
+        text-align: start;
+        gap: 8px;
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0px 5px 10px #1a1a1a80;
+    }
+    .rolll2{
+        border: 0px;
+        padding: 6px 8px;
+        font-size: small;
+        color: #F0F0F0;
+        background: transparent;
+        text-align: center;
+        width: 100%;
+        cursor: context-menu !important;
+        box-shadow: 0px 5px 10px #1a1a1a80;
+    }
+    .rolll:active{
+        border-radius: 8px;
+        background:  #F0F0F0;
+    }
+    .rolll:focus{
+        border-radius: 8px;
+        box-shadow: none;
+        border: 2px solid var(--states-focused, #061a24);
+    }
+        }
+.notification{
+    position: absolute;
+    width: 450px;
+    height: 250px;
+    overflow-y: auto;
+    background: #ffffff9c;
+    backdrop-filter: blur(5px);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    z-index: 55;
+    right: 32px;
+    top: 92px;
+    padding: 10px 0px;
+    overflow-x: hidden;
+}
+    </style>
+</head>
+<body>
+
+    <div class="left">
+        <i class="fa d-none d-lg-block d-md-block fa-bell not-icon"><span></span></i>
+        <i class="fa fa-ellipsis-v pe-2 d-block d-lg-none d-md-none"></i>
+        <div class="d-flex align-items-center gap-2 davi">
+            <h6 class="text-light fw-bold" id="username"></h6>
+            <!-- <img src="images/img24.png" alt="..." class="img-fluid bg-warning pt-1" width="40px" height="30%" style="border-radius: 50%;"> -->
+        </div>
+    </div>
+
+    <div class="menu p-3 gap-4" style="display: none;">
+        <div class="d-flex align-items-center justify-content-center gap-2 davi">
+            <!-- <img src="images/img24.png" alt="..." class="img-fluid bg-warning pt-1" width="40px" height="30%" style="border-radius: 50%;"> -->
+            <h6 class="text-light fw-bold" id="username"></h6>
+        </div>
+        <div class="d-grid gap-3">
+            <a href="#">
+                <button class="rolll">
+                    <p class="m-0 p-0">Messages</p>
+                </button>
+            </a>
+            <a href="#">
+                <button class="rolll">
+                    <p class="m-0 p-0">Team Members</p>
+                </button>
+            </a>
+        </div>
+        <div class="d-grid gap-3">
+            <button class="rolll2">
+                <b class="m-0 p-0" id="username"></b>
+                <p class="m-0 p-0" id="username">adelekeoluwamayokun27@gmail.com</p>
+            </button>
+            <a href="#">
+                <button class="rolll">
+                    <p class="m-0 p-0">Settings</p>
+                </button>
+            </a>
+            <a href="#">
+                <button class="rolll">
+                    <p class="m-0 p-0">Manage account</p>
+                </button>
+            </a>
+            <form action="http://localhost:2700/api/v1/aurora/logout">
+                <button type="submit" class="rolll">
+                    <i class="fa fa-door-open"></i>
+                    <span>Logout</span>
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="notification" style="display: none;">
+        <ul class="d-grid gap-2">
+            <li>
+                <p class="notify-content m-0">New user Alert</p>
+                <small class="notify-time">00:00</small>
+            </li>
+            <li>
+                <p class="notify-content m-0">New order pending</p>
+                <small class="notify-time">00:00</small>
+            </li>
+            <li>
+                <p class="notify-content m-0">Product added successfully</p>
+                <small class="notify-time">00:00</small>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <input type="password" id="secret">
+        <i class="fa fa-eye" id="visibility"></i>
+    </div>
+
+    <div id="rf"  style="width: 100px; height: 100px; border: 1px solid #000; background: #fff;"></div>
+
+    <script>
+        const smallScreen = window.matchMedia("(max-width:767px)");
+        const mediumScreen = window.matchMedia("(min-width:768px) and (max-width:991px)");
+        const largeScreen = window.matchMedia("(min-width:992px)");
+        document.addEventListener("onload", () => {
+            function applyBackground() {
+            if(smallScreen.matches) {
+                document.getElementById("rf").style.background = "black"
+                console.log("Small screen detected");
+            } else if(mediumScreen.matches) {
+                document.getElementById("rf").style.background = "blue"
+                console.log("Medium screen detected");
+            } else if(largeScreen.matches) {
+                document.getElementById("rf").style.background = "yellow"
+                console.log("Large screen detected");
+            }
+           }
+            applyBackground();
+            window.addEventListener("resize", applyBackground)
+        });
+
+        let davi = document.querySelector(".davi")
+        let noti = document.querySelector(".not-icon")
+
+        davi.addEventListener("click", () => {
+            const content = document.querySelector(".menu")
+            const content2 = document.querySelector(".notification")
+
+            const expanded = content.style.display === 'flex';
+            const expanded2 = content.style.display === 'none';
+
+            // Toggle the selected card
+            content.style.display = expanded ? 'none' : 'flex';
+            content2.style.display = expanded2 ? 'none' : 'none';
+        });
+        
+        noti.addEventListener("click", () => {
+    const content = document.querySelector(".notification")
+    const content2 = document.querySelector(".menu-fl")
+
+    const expanded = content.style.display === 'flex';
+    const expanded2 = content.style.display === 'none';
+
+    // Toggle the selected card
+    content.style.display = expanded ? 'none' : 'flex';
+    content2.style.display = expanded2 ? 'none' : 'none';
+})
+
+
+// hide and show password
+
+const secret = document.querySelectorAll("#secret input") 
+const visibility = document.querySelectorAll("#visibility") 
+
+visibility.forEach(i => {
+    i.addEventListener("click", showHidePassword)
+})
+
+function showHidePassword() {
+    secret.forEach(pwd => {
+        pwd.type === "password" ? pwd.setAttribute("type", "text") : pwd.setAttribute("type", "password")
+    })
+    visibility.forEach(i=>{
+        i.classList.toggle("ti-eye")
+        i.classList.toggle("ti-eye-off")
+    })
+}
+
+    </script>
+    
+</body>
+</html>
+
+
+<!-- This is simple, just divide your JAMB score by 400 and multiply the result by 75. Say you had 280 in JAMB, from the above, your new JAMB point will now be [(280/400) * 75] = 52.5. -->
+<!-- A1 =6 B2 =5 B3 =4 C4 =3 C5 =2 C6 =1 -->
+
+
+<!-- 2, 4, 5, 2, 6, 5, 1, 4, 1 -->
+<!-- Now let’s calculate the O’level point! To do that, divide your total o’level score by 30 and multiply the result by 25. PRACTICAL: Based on our O’level total score of 28, our O’level point will be (28/30) * 25 = 23.3.
+math b2 5
+eng c5 2
+chem b3 4
+phy c6 1
+mark c5 2
+
+38.8
+20.4
+
+Our final aggregate score will now be JAMB Point 52.5 + 23.3 = 75.8%-->
